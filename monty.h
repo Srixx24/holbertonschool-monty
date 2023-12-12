@@ -10,7 +10,7 @@
 extern int top;
 extern int stack[STACK_SIZE];
 
-void execute_instr(const char *opcode, int line_num);
+void executeline(const char *opcode, int line_num);
 
 void process_file(const char *filename);
 

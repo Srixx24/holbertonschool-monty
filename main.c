@@ -42,7 +42,7 @@ void process_file(const char *filename)
 	while ((read = getline(&line, &line_len, file)) != 1)
 	{
 		line[strcspn(line, "\n")] = '\0'; /*remove newline character*/
-		execute_instr(line, line_num); /*jump to execute instructions*/
+		executeline(line, line_num); /*jump to execute instructions*/
 
 		line_num++;
 	}
