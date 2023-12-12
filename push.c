@@ -9,7 +9,6 @@ extern int stack[];
 
 void push(int value)
 {
-	int top = 0;
 
 	/*checks if stack is full*/
 	if (top == STACK_SIZE)

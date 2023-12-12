@@ -12,6 +12,6 @@ void pall(void)
 	for (x = top - 1; x >= 0; x--)
 	{
 		/*prints each value*/
-		fprintf(stderr, "%d\n", stack[x]);
+		fprintf(stdout, "%d\n", stack[x]);
 	}
 }
