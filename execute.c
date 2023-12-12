@@ -8,10 +8,10 @@ void execute_instr(const char *opcode, int line_num)
 	{
 		if (scanf("%d", &value) != 1)
 		{
-			fprintf(stderr, "Invaid\n");
+			fprintf(stderr, "Invaid input: for push\n");
 			exit(EXIT_FAILURE);
 		}
-		push(value, &value);
+		push(&value);
 	}
 	else if (strcmp(opcode, "pall") == 0)
 	{
