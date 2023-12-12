@@ -7,13 +7,18 @@
 extern int top;
 extern int stack[];
 
-void push(int value)
+void push(int value, int line_num, const char *line)
 {
 
 	/*checks if stack is full*/
 	if (top == STACK_SIZE)
 	{
-		fprintf(stderr, "Overflow\n");
+		fprintf(stderr, "L%d: Overflow\n", line_num);
+		exit(EXIT_FAILURE);
+	}
+	if (value == 0 && line[4] != '0')
+	{
+		fprintf(stderr, "L%d: usage: push integer\n", line_num);
 		exit(EXIT_FAILURE);
 	}
 	/*increment to top and adds the value*/

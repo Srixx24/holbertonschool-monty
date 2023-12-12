@@ -6,7 +6,7 @@ void executeline(const char *opcode, int line_num)
 
 	if (sscanf(opcode, "push %d", &value) == 1)
 	{
-		push(value);
+		push(value, line_num, opcode);
 	}
 	else if (strcmp(opcode, "pall") == 0)
 		pall();
