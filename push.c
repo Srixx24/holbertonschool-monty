@@ -12,7 +12,7 @@ void push(int value)
 	int top = 0;
 
 	/*checks if stack is full*/
-	if (top == STACK_SIZE - 1)
+	if (top == STACK_SIZE)
 	{
 		fprintf(stderr, "Overflow\n");
 		exit(EXIT_FAILURE);
