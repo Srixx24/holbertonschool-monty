@@ -10,10 +10,4 @@ void executeline(const char *opcode, int line_num)
 	}
 	else if (strcmp(opcode, "pall") == 0)
 		pall();
-	
-	else
-	{
-		fprintf(stderr, "L%d: unknown instruction %s\n", line_num, opcode);
-		exit(EXIT_FAILURE);
-	}
 }
