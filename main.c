@@ -39,7 +39,7 @@ void process_file(const char *filename)
 		fprintf(stderr, "Error: Can't open file %s\n", filename);
 		exit(EXIT_FAILURE);
 	}
-	while ((read = getline(&line, &line_len, file)) != 1)
+	while ((read = getline(&line, &line_len, file)) != -1)
 	{
 		line[strcspn(line, "\n")] = '\0'; /*remove newline character*/
 		executeline(line, line_num); /*jump to execute instructions*/
