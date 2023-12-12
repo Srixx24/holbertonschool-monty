@@ -1,5 +1,7 @@
 #include "monty.h"
 void process_file(const char *filename);
+int top = 0;
+int stack[STACK_SIZE];
 /**
  * main - entry point for program
  * @argc: number of arguments

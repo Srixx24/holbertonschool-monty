@@ -3,14 +3,13 @@
  * pall - prints the stack 
  */
 extern int stack[];
-
+extern int top;
 void pall(void)
 {
-	int x = 0;
-	int stack[20];
+	int x;
 
 	/*starts at top of stack*/
-	for (; x >= 0; x--)
+	for (x = top - 1; x >= 0; x--)
 	{
 		/*prints each value*/
 		fprintf(stderr, "%d\n", stack[x]);

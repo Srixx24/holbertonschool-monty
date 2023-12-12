@@ -7,12 +7,14 @@
 #include <stdbool.h>
 #define MAX_OPCODE_LENGTH 5
 #define STACK_SIZE 100
+extern int top;
+extern int stack[STACK_SIZE];
 
 void execute_instr(const char *opcode, int line_num);
 
 void process_file(const char *filename);
 
-void push(int value, int *stack);
+void push(int value);
 
 void pall(void);
 

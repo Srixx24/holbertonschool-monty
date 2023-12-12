@@ -11,7 +11,7 @@ void execute_instr(const char *opcode, int line_num)
 			fprintf(stderr, "Invaid input: for push\n");
 			exit(EXIT_FAILURE);
 		}
-		push(&value);
+		push(value);
 	}
 	else if (strcmp(opcode, "pall") == 0)
 	{
