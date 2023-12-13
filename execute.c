@@ -10,13 +10,18 @@ void executeline(const char *line, int line_num)
 	char opcode[4000];
 	char *token;
 
+	while (isspace(*line))
+		line++;
 	/*skiping blank line*/
-	if (sscanf(line, "%3999s", opcode) != 1)
-		return;
+	if (*line == '\0')
+		line++;
+	token = strtok((char *) line, " \t\n");
+	if (token == NULL)
+		exit(EXIT_FAILURE);
+	strcpy(opcode, token);
 	/*check for push command*/
-	if (sscanf(opcode, "push") == 0)
+	if (strcmp(opcode, "push") == 0)
 	{
-		token = strtok((char *) line, " \t\n");
 		token = strtok(NULL, " \t\n");
 		if (token == NULL || !isdigit(*token))
 		{
