@@ -7,6 +7,7 @@
 void executeline(const char *line, int line_num)
 {
 	char opcode[4000];
+	int value;
 
 	while (isspace(*line))
 		line++;
