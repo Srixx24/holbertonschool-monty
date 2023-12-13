@@ -7,7 +7,7 @@ void add(int line_num)
 {
 	if (top < 1)
 	{
-		fprintf(stderr, "L%d: can't add, stack too short", line_num);
+		fprintf(stderr, "L%d: can't add, stack too short\n", line_num);
 		exit(EXIT_FAILURE);
 	}
 
