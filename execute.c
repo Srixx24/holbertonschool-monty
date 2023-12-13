@@ -8,6 +8,7 @@ void executeline(const char *line, int line_num)
 {
 	int value;
 	char opcode[4000];
+	char *token;
 
 	/*skiping blank line*/
 	if (sscanf(line, "%3999s", opcode) != 1)
@@ -15,11 +16,14 @@ void executeline(const char *line, int line_num)
 	/*check for push command*/
 	if (sscanf(opcode, "push") == 0)
 	{
-		if (sscanf(line, "%*s %d", &value) != 1)
+		token = strtok((char *) line, " \t\n");
+		token = strtok(NULL, " \t\n");
+		if (token == NULL)
 		{
 			fprintf(stderr, "L%d: usage: push integer\n", line_num);
 			exit(EXIT_FAILURE);
 		}
+		value = atoi(token);
 		push(value, line_num, opcode);
 	}
 	else if (strcmp(opcode, "pall") == 0)
