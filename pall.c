@@ -1,9 +1,7 @@
 #include "monty.h"
 /**
- * pall - prints the stack 
+ * pall - prints the stack
  */
-extern int stack[];
-extern int top;
 void pall(void)
 {
 	int x;

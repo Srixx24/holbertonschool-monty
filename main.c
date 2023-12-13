@@ -23,9 +23,9 @@ int main(int argc, char *argv[])
 	return (0);
 }
 /**
- * process_file - process the contents of file 
+ * process_file - process the contents of file
  * @filename: name of the file to process
- */ 
+ */
 void process_file(const char *filename)
 {
 	FILE *file = fopen(filename, "r");

@@ -2,6 +2,8 @@
 /**
  * push - adds to the stack
  * @value: value to be added
+ * @line_num: line number
+ * @line: line
  */
 void push(int value, int line_num, const char *line)
 {
