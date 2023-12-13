@@ -1,6 +1,7 @@
 #include "monty.h"
 /**
  * pint - prints the value at the top of the stack
+ * @line_num: line number
  */
 void pint(int line_num)
 {
