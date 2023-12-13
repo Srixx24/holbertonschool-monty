@@ -19,13 +19,13 @@ void push(int value, int line_num, const char *line);
 
 void pall(void);
 
-void pint(void);
+void pint(int line_num);
 
-void pop(void);
+void pop(int line_num);
 
-void swap(void);
+void swap(int line_num);
 
-void add(void);
+void add(int line_num);
 
 void nop(void);
 

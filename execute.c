@@ -33,6 +33,16 @@ void executeline(const char *line, int line_num)
 	}
 	else if (strcmp(opcode, "pall") == 0)
 		pall();
+	else if (strcmp(opcode, "pint") == 0)
+		pint(line_num);
+	else if (strcmp(opcode, "pop") == 0)
+		pint(line_num);
+	else if (strcmp(opcode, "swap") == 0)
+		swap(line_num);
+	else if (strcmp(opcode, "add") == 0)
+		add(line_num);
+	else if (strcmp(opcode, "nop") == 0)
+		nop();
 	else
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n", line_num, opcode);
