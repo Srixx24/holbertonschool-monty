@@ -14,7 +14,7 @@ void executeline(const char *line, int line_num)
 		line++;
 	/*skiping blank line*/
 	if (*line == '\0')
-		line++;
+		return;
 	token = strtok((char *) line, " \t\n");
 	if (token == NULL)
 		exit(EXIT_FAILURE);
