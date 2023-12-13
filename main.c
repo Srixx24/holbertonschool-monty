@@ -44,7 +44,7 @@ void process_file(const char *filename)
 		line[strcspn(line, "\n")] = '\0'; /*remove newline character*/
 		executeline(line, line_num); /*jump to execute function*/
 
-		line_num = line_num + 1;
+		line_num++;
 	}
 
 	free(line);

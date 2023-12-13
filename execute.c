@@ -8,34 +8,36 @@ void executeline(const char *line, int line_num)
 {
 	char opcode[4000];
 	int value;
-
-	while (isspace(*line))
-		line++;
-	/*skiping blank line*/
-	if (*line == '\0')
+	char *copy = strdup(line);
+	char *token = strtok(copy, " \t\n");
+	if (token == NULL)
 		return;
-	if (sscanf(line, "%s %d", opcode, &value) != 2)
+	strcpy(opcode, token);
+	while (token != NULL)
 	{
-		fprintf(stderr, "L%d: Invalid command\n", line_num);
-		exit(EXIT_FAILURE);
+		if (sscanf(token, "%d", &value) == 1)
+		{
+			if (strcmp(opcode, "push") == 0)
+				push(line_num, opcode);
+			else if (strcmp(opcode, "pall") == 0)
+				pall();
+			else if (strcmp(opcode, "pint") == 0)
+				pint(line_num);
+			else if (strcmp(opcode, "pop") == 0)
+				pop(line_num);
+			else if (strcmp(opcode, "swap") == 0)
+				swap(line_num);
+			else if (strcmp(opcode, "add") == 0)
+				add(line_num);
+			else if (strcmp(opcode, "nop") == 0)
+				nop();
+			else
+			{
+				fprintf(stderr, "L%d: unknown instruction %s\n", line_num, opcode);
+				exit(EXIT_FAILURE);
+			}
+		}
+		token = strtok(NULL, " \t\n");
 	}
-	if (strcmp(opcode, "push") == 0)
-		push(line_num, opcode);
-	else if (strcmp(opcode, "pall") == 0)
-		pall();
-	else if (strcmp(opcode, "pint") == 0)
-		pint(line_num);
-	else if (strcmp(opcode, "pop") == 0)
-		pop(line_num);
-	else if (strcmp(opcode, "swap") == 0)
-		swap(line_num);
-	else if (strcmp(opcode, "add") == 0)
-		add(line_num);
-	else if (strcmp(opcode, "nop") == 0)
-		nop();
-	else
-	{
-		fprintf(stderr, "L%d: unknown instruction %s\n", line_num, opcode);
-		exit(EXIT_FAILURE);
-	}
+	free(copy);
 }
