@@ -29,4 +29,5 @@ void add(int line_num);
 
 void nop(void);
 
+void boop(int hi);
 #endif
