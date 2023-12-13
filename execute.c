@@ -6,7 +6,6 @@
  */
 void executeline(const char *line, int line_num)
 {
-	int value;
 	char opcode[4000];
 	char *token;
 
@@ -21,22 +20,13 @@ void executeline(const char *line, int line_num)
 	strcpy(opcode, token);
 	/*check for push command*/
 	if (strcmp(opcode, "push") == 0)
-	{
-		token = strtok(NULL, " \t\n");
-		if (token == NULL || !isdigit(*token))
-		{
-			fprintf(stderr, "L%d: usage: push integer\n", line_num);
-			exit(EXIT_FAILURE);
-		}
-		value = atoi(token);
-		push(value, line_num, opcode);
-	}
+		push(line_num, opcode);
 	else if (strcmp(opcode, "pall") == 0)
 		pall();
 	else if (strcmp(opcode, "pint") == 0)
 		pint(line_num);
 	else if (strcmp(opcode, "pop") == 0)
-		pint(line_num);
+		pop(line_num);
 	else if (strcmp(opcode, "swap") == 0)
 		swap(line_num);
 	else if (strcmp(opcode, "add") == 0)

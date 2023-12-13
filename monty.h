@@ -15,7 +15,7 @@ void executeline(const char *opcode, int line_num);
 
 void process_file(const char *filename);
 
-void push(int value, int line_num, const char *line);
+void push(int line_num, const char *line);
 
 void pall(void);
 

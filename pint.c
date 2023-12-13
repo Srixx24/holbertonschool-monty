@@ -9,5 +9,8 @@ void pint(int line_num)
 		fprintf(stderr, "L%d: can't pint, stack empty\n", line_num);
 		exit(EXIT_FAILURE);
 	}
-	printf("%d\n", stack[top]);
+	else
+	{
+		printf("%d\n", stack[top]);
+	}
 }

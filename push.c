@@ -5,8 +5,10 @@
  * @line_num: line number
  * @line: line
  */
-void push(int value, int line_num, const char *line)
+void push(int line_num, const char *line)
 {
+	char *end;
+	int value;
 
 	/*checks if stack is full*/
 	if (top == STACK_SIZE)
@@ -14,7 +16,13 @@ void push(int value, int line_num, const char *line)
 		fprintf(stderr, "L%d: Overflow\n", line_num);
 		exit(EXIT_FAILURE);
 	}
-	if (value == 0 && line[4] != '0')
+	if (line == NULL || strspn(line, " \t\n") == strlen(line))
+	{
+		fprintf(stderr, "L%d: usage: push integer\n", line_num);
+		exit(EXIT_FAILURE);
+	}
+	value = (int)strtol(line, &end, 10);
+	if (*end != '\0' && !isspace(*end))
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_num);
 		exit(EXIT_FAILURE);
