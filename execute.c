@@ -1,19 +1,28 @@
 #include "monty.h"
-
-void executeline(const char *opcode, int line_num)
+/**
+ * executeline - process lines
+ * @line: input line
+ * @line_num: line number
+ */
+void executeline(const char *line, int line_num)
 {
 	int value;
+	char opcode[4000];
 
-	if (sscanf(opcode, "push %d", &value) == 1)
+	/*skiping blank line*/
+	if (sscanf(line, "%99s", opcode) != 1)
+		return;
+	/*check for push command*/
+	if (sscanf(opcode, "push") == 0)
 	{
+		if (sscanf(line, "%*s %d", &value) != 1)
+		{
+			fprintf(stderr, "L%d: usage: push integer\n", line_num);
+			exit(EXIT_FAILURE);
+		}
 		push(value, line_num, opcode);
 	}
-	else
-	{
-		fprintf(stderr, "L%d: usage: push integer\n", line_num);
-		exit(EXIT_FAILURE);
-	}
-	if (strcmp(opcode, "pall") == 0)
+	else if (strcmp(opcode, "pall") == 0)
 		pall();
 	else
 	{
