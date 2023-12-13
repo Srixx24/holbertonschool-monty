@@ -7,18 +7,17 @@
 void executeline(const char *line, int line_num)
 {
 	char opcode[4000];
-	char *token;
 
 	while (isspace(*line))
 		line++;
 	/*skiping blank line*/
 	if (*line == '\0')
 		return;
-	token = strtok((char *) line, " \t\n");
-	if (token == NULL)
+	if (sscanf(line, "%s %d", opcode, &value) != 2)
+	{
+		fprintf(stderr, "L%d: Invalid command\n", line_num);
 		exit(EXIT_FAILURE);
-	strcpy(opcode, token);
-	/*check for push command*/
+	}
 	if (strcmp(opcode, "push") == 0)
 		push(line_num, opcode);
 	else if (strcmp(opcode, "pall") == 0)
