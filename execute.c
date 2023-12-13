@@ -18,7 +18,7 @@ void executeline(const char *line, int line_num)
 	{
 		token = strtok((char *) line, " \t\n");
 		token = strtok(NULL, " \t\n");
-		if (token == NULL)
+		if (token == NULL || *token == '\0')
 		{
 			fprintf(stderr, "L%d: usage: push integer\n", line_num);
 			exit(EXIT_FAILURE);
