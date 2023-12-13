@@ -3,10 +3,6 @@
  * push - adds to the stack
  * @value: value to be added
  */
-#define STACK_SIZE 100
-extern int top;
-extern int stack[];
-
 void push(int value, int line_num, const char *line)
 {
 

@@ -4,8 +4,7 @@ void executeline(const char *opcode, int line_num)
 {
 	int value;
 
-	if (sscanf(opcode, "push %d", &value) == 1 ||
-		sscanf(opcode, "push %*s %d", &value) == 1)
+	if (sscanf(opcode, "push %d", &value) == 1)
 	{
 		push(value, line_num, opcode);
 	}
