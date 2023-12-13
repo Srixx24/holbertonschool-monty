@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
+#include <ctype.h>
 #define MAX_OPCODE_LENGTH 5
 #define STACK_SIZE 100
 extern int top;
