@@ -26,7 +26,7 @@ void executeline(const char *line, int line_num, stack_t **stack)
 			value = strtol(token, &end, 10);
 			push(stack, line_num, value);
 		}
-		/*else if (strcmp(opcode, "pall") == 0)
+		else if (strcmp(opcode, "pall") == 0)
 			pall(stack);
 		else if (strcmp(opcode, "pint") == 0)
 			pint(stack, line_num);
@@ -37,7 +37,7 @@ void executeline(const char *line, int line_num, stack_t **stack)
 		else if (strcmp(opcode, "add") == 0)
 			add(stack, line_num);
 		else if (strcmp(opcode, "nop") == 0)
-			nop();*/
+			nop();
 		else
 		{
 			fprintf(stderr, "L%d: unknown instruction %s\n", line_num, opcode);
