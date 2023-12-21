@@ -4,28 +4,24 @@
  * @line_num: line number
  * @line: line
  */
-void push(int line_num, const char *line)
+void push(stack_t *stack, int line_num, int *value)
 {
-	char *end;
-	int value;
+	stack_t *new = malloc(sizeof(stack_t));
 
-	/*checks if stack is full*/
-	if (top == STACK_SIZE)
-	{
-		fprintf(stderr, "L%d: Overflow\n", line_num);
-		exit(EXIT_FAILURE);
-	}
-	if (line == NULL || strspn(line, " \t\n") == strlen(line))
+	if (value == NULL || stack == NULL)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_num);
 		exit(EXIT_FAILURE);
 	}
-	value = (int)strtol(line, &end, 10);
-	if (*end != '\0' && !isspace(*end))
-	{
-		fprintf(stderr, "L%d: usage: push integer\n", line_num);
+	if (new == NULL)
 		exit(EXIT_FAILURE);
-	}
-	/*increment to top and adds the value*/
-	stack[++top] = value;
+
+	new->n = *value;
+	new->prev = NULL;
+	new->next = stack;
+
+	if (stack != NULL)
+		(stack)->prev = new;
+
+	stack = new;
 }

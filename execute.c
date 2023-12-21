@@ -4,36 +4,39 @@
  * @line: input line
  * @line_num: line number
  */
-void executeline(const char *line, int line_num)
+void executeline(const char *line, int line_num, stack_t **stack)
 {
-	char opcode[4000];
+	char opcode[MAX_OPCODE_LENGTH];
 	int value;
 	char *copy = strdup(line);
 	char *token = strtok(copy, " \t\n");
+	opcode[MAX_OPCODE_LENGTH] = '\0';
+
 	if (token == NULL)
 		return;
-	strcpy(opcode, token);
+	strncpy(opcode, token, MAX_OPCODE_LENGTH);
 	while (token != NULL)
 	{
 		if (sscanf(token, "%d", &value) == 1)
 		{
 			if (strcmp(opcode, "push") == 0)
-				push(line_num, opcode);
+				push(*stack, line_num, &value);
 			else if (strcmp(opcode, "pall") == 0)
-				pall();
+				pall(stack);
 			else if (strcmp(opcode, "pint") == 0)
-				pint(line_num);
+				pint(stack, line_num);
 			else if (strcmp(opcode, "pop") == 0)
-				pop(line_num);
+				pop(stack, line_num);
 			else if (strcmp(opcode, "swap") == 0)
-				swap(line_num);
+				swap(stack, line_num);
 			else if (strcmp(opcode, "add") == 0)
-				add(line_num);
+				add(stack, line_num);
 			else if (strcmp(opcode, "nop") == 0)
 				nop();
 			else
 			{
 				fprintf(stderr, "L%d: unknown instruction %s\n", line_num, opcode);
+				free(copy);
 				exit(EXIT_FAILURE);
 			}
 		}
