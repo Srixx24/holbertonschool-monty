@@ -36,7 +36,7 @@ void executeline(const char *opcode, int line_num, stack_t **stack);
 
 void process_file(const char *filename);
 
-void push(stack_t **stack, int line_num, const char *token);
+void push(stack_t **stack, int line_num, int value);
 
 void pall(stack_t **stack);
 

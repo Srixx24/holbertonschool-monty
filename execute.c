@@ -10,6 +10,8 @@ void executeline(const char *line, int line_num, stack_t **stack)
 	char opcode[MAX_OPCODE_LENGTH];
 	char *copy = strdup(line);
 	char *token = strtok(copy, " \t\n");
+	int value;
+	char *end;
 
 	opcode[MAX_OPCODE_LENGTH - 1] = '\0';
 
@@ -20,7 +22,10 @@ void executeline(const char *line, int line_num, stack_t **stack)
 	{
 
 		if (strcmp(opcode, "push") == 0)
-			push(stack, line_num, token);
+		{
+			value = strtol(token, &end, 10);
+			push(stack, line_num, value);
+		}
 		else if (strcmp(opcode, "pall") == 0)
 			pall(stack);
 		else if (strcmp(opcode, "pint") == 0)

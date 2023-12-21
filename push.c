@@ -5,20 +5,17 @@
  * @value: value
  * @stack: stack
  */
-void push(stack_t **stack, int line_num, const char *token)
+void push(stack_t **stack, int line_num, int value)
 {
-	int value;
-	char *end;
 
 	stack_t *new = malloc(sizeof(stack_t));
 
-	if (token == NULL)
+	if (new == NULL)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_num);
 		free(new);
 		exit(EXIT_FAILURE);
 	}
-	value = strtol(token, &end, 10);
 
 	if (new == NULL)
 		exit(EXIT_FAILURE);
