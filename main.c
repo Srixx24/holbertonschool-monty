@@ -41,7 +41,6 @@ void process_file(const char *filename)
 	}
 	while (fgets(line, sizeof(line), file) != NULL)
 	{
-		line[strcspn(line, "\n")] = '\0'; /*remove newline character*/
 		executeline(line, line_num, &stack); /*jump to execute function*/
 
 		line_num++;
