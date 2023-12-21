@@ -4,11 +4,11 @@
  * @line_num: line number
  * @line: line
  */
-void push(stack_t *stack, int line_num, int *value)
+void push(stack_t **stack, int line_num, int *value)
 {
 	stack_t *new = malloc(sizeof(stack_t));
 
-	if (value == NULL || stack == NULL)
+	if (value == NULL || !isdigit(*value + '0'))
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_num);
 		exit(EXIT_FAILURE);
@@ -18,10 +18,10 @@ void push(stack_t *stack, int line_num, int *value)
 
 	new->n = *value;
 	new->prev = NULL;
-	new->next = stack;
+	new->next = *stack;
 
-	if (stack != NULL)
-		(stack)->prev = new;
+	if (*stack != NULL)
+		(*stack)->prev = new;
 
-	stack = new;
+	*stack = new;
 }

@@ -6,11 +6,11 @@
  */
 void executeline(const char *line, int line_num, stack_t **stack)
 {
-	char opcode[MAX_OPCODE_LENGTH];
+	char opcode[MAX_OPCODE_LENGTH] = {'\0'};
 	int value;
 	char *copy = strdup(line);
 	char *token = strtok(copy, " \t\n");
-	opcode[MAX_OPCODE_LENGTH] = '\0';
+	opcode[MAX_OPCODE_LENGTH - 1] = '\0';
 
 	if (token == NULL)
 		return;
@@ -20,7 +20,7 @@ void executeline(const char *line, int line_num, stack_t **stack)
 		if (sscanf(token, "%d", &value) == 1)
 		{
 			if (strcmp(opcode, "push") == 0)
-				push(*stack, line_num, &value);
+				push(stack, line_num, &value);
 			else if (strcmp(opcode, "pall") == 0)
 				pall(stack);
 			else if (strcmp(opcode, "pint") == 0)
