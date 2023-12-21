@@ -19,12 +19,7 @@ void push(stack_t **stack, int line_num, const char *token)
 		exit(EXIT_FAILURE);
 	}
 	value = strtol(token, &end, 10);
-	if (*end != '\0' && !isspace((unsigned char)*end))
-	{
-		fprintf(stderr, "L%d: invalid integer argument for push\n", line_num);
-		free(new);
-		exit(EXIT_FAILURE);
-	}
+
 	if (new == NULL)
 		exit(EXIT_FAILURE);
 

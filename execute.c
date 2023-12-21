@@ -16,6 +16,7 @@ void executeline(const char *line, int line_num, stack_t **stack)
 	if (token == NULL)
 		return;
 	strncpy(opcode, token, MAX_OPCODE_LENGTH);
+	opcode[sizeof(opcode) - 1] = '\0';
 	while (token != NULL)
 	{
 
