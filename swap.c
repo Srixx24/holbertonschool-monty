@@ -2,16 +2,18 @@
 /**
  * swap - swaps the top two elements of the stack
  * @line_num: line number
+ * @stack: stack
  */
-void swap(int line_num)
+void swap(stack_t **stack, unsigned int line_num)
 {
-	int temp = stack[top];
+	int temp = (*stack)->n;
 
-	if (top < 1)
+	if (*stack == NULL || (*stack)->next == NULL)
 	{
 		fprintf(stderr, "L%d: can't swap, stack too short\n", line_num);
 		exit(EXIT_FAILURE);
 	}
-	stack[top] = stack[top - 1];
-	stack[top - 1] = temp;
+
+	(*stack)->n = (*stack)->next->n;
+	(*stack)->next->n = temp;
 }

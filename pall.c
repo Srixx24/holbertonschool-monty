@@ -1,17 +1,15 @@
 #include "monty.h"
 /**
  * pall - prints the stack
+ * @stack: stack
  */
-void pall(void)
+void pall(stack_t **stack)
 {
-	int x;
+	const stack_t *cur = *stack;
 
-	if (top == 0)
-		return;
-	/*starts at top of stack*/
-	for (x = top - 1; x >= 0; x--)
+	while (cur != NULL)
 	{
-		/*prints each value*/
-		fprintf(stdout, "%d\n", stack[x]);
+		printf("%d\n", cur->n);
+		cur = cur->next;
 	}
 }

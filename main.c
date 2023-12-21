@@ -33,6 +33,7 @@ void process_file(const char *filename)
 	int line_num = 1;
 	size_t line_len = 0;
 	ssize_t read;
+	stack_t *stack = NULL;
 
 	if (file == NULL)
 	{
@@ -42,7 +43,7 @@ void process_file(const char *filename)
 	while ((read = getline(&line, &line_len, file)) != -1)
 	{
 		line[strcspn(line, "\n")] = '\0'; /*remove newline character*/
-		executeline(line, line_num); /*jump to execute function*/
+		executeline(line, line_num, &stack); /*jump to execute function*/
 
 		line_num++;
 	}
