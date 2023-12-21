@@ -2,6 +2,7 @@
 /**
  * add - adds the top two elements of the stack
  * @line_num: line number
+ * @stack: stack
  */
 void add(stack_t **stack, unsigned int line_num)
 {

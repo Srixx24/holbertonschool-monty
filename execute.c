@@ -3,6 +3,7 @@
  * executeline - process lines
  * @line: input line
  * @line_num: line number
+ * @stack: stack
  */
 void executeline(const char *line, int line_num, stack_t **stack)
 {
@@ -10,6 +11,7 @@ void executeline(const char *line, int line_num, stack_t **stack)
 	int value;
 	char *copy = strdup(line);
 	char *token = strtok(copy, " \t\n");
+
 	opcode[MAX_OPCODE_LENGTH - 1] = '\0';
 
 	if (token == NULL)
@@ -17,7 +19,7 @@ void executeline(const char *line, int line_num, stack_t **stack)
 	strncpy(opcode, token, MAX_OPCODE_LENGTH);
 	while (token != NULL)
 	{
-		if (sscanf(token, "%d", &value) == 1)
+		if (sscanf((const char *)token, "%d", &value) == 1)
 		{
 			if (strcmp(opcode, "push") == 0)
 				push(stack, line_num, &value);

@@ -1,6 +1,7 @@
 #include "monty.h"
 /**
  * pall - prints the stack
+ * @stack: stack
  */
 void pall(stack_t **stack)
 {

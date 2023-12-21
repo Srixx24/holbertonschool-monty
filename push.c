@@ -2,7 +2,8 @@
 /**
  * push - adds to the stack
  * @line_num: line number
- * @line: line
+ * @value: value
+ * @stack: stack
  */
 void push(stack_t **stack, int line_num, int *value)
 {

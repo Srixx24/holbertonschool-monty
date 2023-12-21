@@ -2,6 +2,7 @@
 /**
  * swap - swaps the top two elements of the stack
  * @line_num: line number
+ * @stack: stack
  */
 void swap(stack_t **stack, unsigned int line_num)
 {
