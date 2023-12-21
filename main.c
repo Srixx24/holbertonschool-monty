@@ -2,6 +2,7 @@
 void process_file(const char *filename);
 int top = 0;
 int stack[STACK_SIZE];
+#define MAX_LINE_LENGTH 1200
 /**
  * main - entry point for program
  * @argc: number of arguments
@@ -29,10 +30,8 @@ int main(int argc, char *argv[])
 void process_file(const char *filename)
 {
 	FILE *file = fopen(filename, "r");
-	char *line = NULL;
+	char line[MAX_LINE_LENGTH];
 	int line_num = 1;
-	size_t line_len = 0;
-	ssize_t read;
 	stack_t *stack = NULL;
 
 	if (file == NULL)
@@ -40,7 +39,7 @@ void process_file(const char *filename)
 		fprintf(stderr, "Error: Can't open file %s\n", filename);
 		exit(EXIT_FAILURE);
 	}
-	while ((read = getline(&line, &line_len, file)) != -1)
+	while (fgets(line, sizeof(line), file) != NULL)
 	{
 		line[strcspn(line, "\n")] = '\0'; /*remove newline character*/
 		executeline(line, line_num, &stack); /*jump to execute function*/
@@ -48,6 +47,5 @@ void process_file(const char *filename)
 		line_num++;
 	}
 
-	free(line);
 	fclose(file); /*close file*/
 }
